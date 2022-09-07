@@ -8,6 +8,7 @@
 #define MAX_CHILDREN 20
 #define DTYPE_DIR 4
 #define MAX_PATH_LEN 50
+#define MAX_PROC_NAME_LEN 30
 
 void dosomething()
 {
@@ -104,9 +105,18 @@ int main(int argc, char *argv[]) {
       // printf("%s\n",pid);
       char status_file_path[MAX_PATH_LEN] = "";
       strcat(strcat(strcat(strcat(status_file_path,proc_path),"/"),pid),"/status");
-      // status_file_path = strcat(proc_path,status_file_path);
-      // status_file_path = strcat(status_file_path,"/status");
-      printf("%s\n",status_file_path);
+      // printf("%s\n",status_file_path);
+      char process_name[MAX_PROC_NAME_LEN];
+      FILE *status = fopen(status_file_path,"r");
+      if(status == NULL)
+      {
+        perror("Error opening file");
+        return(-1);
+      }
+      if(fgets (process_name,MAX_PROC_NAME_LEN, status)!=NULL )
+      {
+        printf("%s\n",process_name);
+      }
     }
   }
   closedir(dir);
