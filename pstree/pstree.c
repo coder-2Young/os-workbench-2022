@@ -15,11 +15,11 @@ int main(int argc, char *argv[]) {
 
   for (int i = 0; i < argc; i++) {
     assert(argv[i]);
-    if(strcmp(argv[i], "-n")||strcmp(argv[i],"--numeric-sort"))
+    if(!strcmp(argv[i], "-n")||!strcmp(argv[i],"--numeric-sort"))
       _numeric_out = 1;
-    else if(strcmp(argv[i], "-p")||strcmp(argv[i],"--show-pids"))
+    else if(!strcmp(argv[i], "-p")||!strcmp(argv[i],"--show-pids"))
       _pid_out = 1;
-    else if(strcmp(argv[i], "-V")||strcmp(argv[i],"--version"))
+    else if(!strcmp(argv[i], "-V")||!strcmp(argv[i],"--version"))
       _version_out = 1;
     else
     {
