@@ -2,9 +2,47 @@
 #include <assert.h>
 #include <string.h>
 
+#define MAX_CHILDREN 20;
+
 void dosomething()
 {
 
+}
+
+typedef struct 
+{
+  int _p_id;
+  char *_p_name;
+  Process *_p_children[20];
+  int _num_children;
+}Process;
+
+Process* init_process(int pid, char* name)
+{
+  Process *p;
+  p->_p_id = pid;
+  p->_p_name = name;
+  p->_num_children = 0;
+  return p;
+}
+
+void insert_child(Process *parent, Process *child)
+{
+  parent->_p_children[parent->_num_children] = child;
+  parent->_num_children++;
+}
+
+void access_children(Process *parent)
+{
+  if(parent->_num_children == 0) 
+  {
+    printf("PID: %d, NAME: %s", parent->_p_id,parent->_p_name);
+    return;
+  }
+  for(int i=0; i<parent->_num_children;i++)
+  {
+    access_children(parent->_p_children[i]);
+  }
 }
 
 int main(int argc, char *argv[]) {
@@ -29,7 +67,7 @@ int main(int argc, char *argv[]) {
     }
   }
   assert(!argv[argc]);
-  
+
   // print out version info
   char *version_info = 
     "This is my first version of pstree!\n ";
@@ -42,6 +80,13 @@ int main(int argc, char *argv[]) {
   if(_pid_out) dosomething();
   if(_numeric_out) dosomething();
 
+  char *proc_path = "/proc";
+
+  Process *p1 = init_process(1,"root");
+  Process *p2 = init_process(2,"file_sys");
+  insert_child(p1,p2);
+  
+  access_children(p2);
 
   return 0;
 }
