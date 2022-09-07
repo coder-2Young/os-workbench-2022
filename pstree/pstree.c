@@ -125,8 +125,9 @@ int main(int argc, char *argv[]) {
       if(fgets (process_name,MAX_PROC_NAME_LEN, status)!=NULL )
       {
         char* new_process_name=cut_proc_name(process_name);
-        printf("%s",new_process_name);
+        //printf("%s",new_process_name);
       }
+      
     }
   }
   closedir(dir);
