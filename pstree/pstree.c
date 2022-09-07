@@ -98,39 +98,56 @@ int main(int argc, char *argv[]) {
   if(_pid_out) dosomething();
   if(_numeric_out) dosomething();
 
-  char *proc_path = "/proc";
-  struct dirent *files;
-  DIR *dir = opendir(proc_path);
-  if (dir == NULL){
-    printf("Directory cannot be opened!" );
-    return 0;
-  }
-  while ((files = readdir(dir)) != NULL)
-    // printf("%s + %d\n", files->d_name,files->d_type);
+  char *root_path = "/proc/1";
+  char *root_name;
+  char *root_pid = "1";
+  char process_name[MAX_PROC_NAME_LEN];
+  FILE *status = fopen("/proc/1/status","r");
+  if(status == NULL)
   {
-    if(files->d_name[0]<='9' && files->d_name[0]>='0' && files->d_type == DTYPE_DIR) // it is a proc dir
-    {
-      char* pid = files->d_name;
-      // printf("%s\n",pid);
-      char status_file_path[MAX_PATH_LEN] = "";
-      strcat(strcat(strcat(strcat(status_file_path,proc_path),"/"),pid),"/status");
-      // printf("%s\n",status_file_path);
-      char process_name[MAX_PROC_NAME_LEN];
-      FILE *status = fopen(status_file_path,"r");
-      if(status == NULL)
-      {
-        perror("Error opening file");
-        return(-1);
-      }
-      if(fgets (process_name,MAX_PROC_NAME_LEN, status)!=NULL )
-      {
-        char* new_process_name=cut_proc_name(process_name);
-        //printf("%s",new_process_name);
-      }
-      
-    }
+    perror("Error opening file");
+    return(-1);
   }
-  closedir(dir);
+  if(fgets (process_name,MAX_PROC_NAME_LEN, status)!=NULL )
+  {
+    root_name = cut_proc_name(process_name);
+  }
+  printf("PID: %s, NAME: %s\n", root_pid,root_name);
+
+
+  // char *proc_path = "/proc";
+  // struct dirent *files;
+  // DIR *dir = opendir(proc_path);
+  // if (dir == NULL){
+  //   printf("Directory cannot be opened!" );
+  //   return 0;
+  // }
+  // while ((files = readdir(dir)) != NULL)
+  //   // printf("%s + %d\n", files->d_name,files->d_type);
+  // {
+  //   if(files->d_name[0]<='9' && files->d_name[0]>='0' && files->d_type == DTYPE_DIR) // it is a proc dir
+  //   {
+  //     char* pid = files->d_name;
+  //     // printf("%s\n",pid);
+  //     char status_file_path[MAX_PATH_LEN] = "";
+  //     strcat(strcat(strcat(strcat(status_file_path,proc_path),"/"),pid),"/status");
+  //     // printf("%s\n",status_file_path);
+      // char process_name[MAX_PROC_NAME_LEN];
+      // FILE *status = fopen(status_file_path,"r");
+      // if(status == NULL)
+      // {
+      //   perror("Error opening file");
+      //   return(-1);
+      // }
+      // if(fgets (process_name,MAX_PROC_NAME_LEN, status)!=NULL )
+      // {
+      //   char* name=cut_proc_name(process_name);
+  //       Process *p = init_process(pid,name);
+  //     }
+      
+  //   }
+  // }
+  // closedir(dir);
 
 
   // Process *p1 = init_process(1,"root");
