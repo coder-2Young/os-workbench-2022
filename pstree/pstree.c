@@ -108,10 +108,8 @@ int main(int argc, char *argv[]) {
     perror("Error opening file");
     return(-1);
   }
-  if(fgets (process_name,MAX_PROC_NAME_LEN, status)!=NULL )
-  {
-    root_name = cut_proc_name(process_name);
-  }
+  fgets(process_name,MAX_PROC_NAME_LEN, status);
+  root_name = cut_proc_name(process_name);
   Process *root = init_process(root_pid,root_name);
   access_children(root);
 
