@@ -44,6 +44,7 @@ void access_children(Process *parent)
   {
     access_children(parent->_p_children[i]);
   }
+  printf("PID: %d, NAME: %s", parent->_p_id,parent->_p_name);
 }
 
 int main(int argc, char *argv[]) {
