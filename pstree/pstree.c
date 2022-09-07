@@ -47,6 +47,8 @@ void access_children(Process *parent)
   printf("PID: %d, NAME: %s\n", parent->_p_id,parent->_p_name);
 }
 
+
+
 int main(int argc, char *argv[]) {
   // arg part
   int _numeric_out = 0;
@@ -82,12 +84,13 @@ int main(int argc, char *argv[]) {
   if(_pid_out) dosomething();
   if(_numeric_out) dosomething();
 
-  //char *proc_path = "/proc";
+  char *proc_path = "/proc";
+  
+
 
   Process *p1 = init_process(1,"root");
   Process *p2 = init_process(2,"file_sys");
   insert_child(p1,p2);
-  
   access_children(p1);
 
   return 0;
