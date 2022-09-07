@@ -9,6 +9,7 @@
 #define DTYPE_DIR 4
 #define MAX_PATH_LEN 50
 #define MAX_PROC_NAME_LEN 50
+#define MAX_CHILDREN_LIST 200
 
 void dosomething()
 {
@@ -98,6 +99,7 @@ int main(int argc, char *argv[]) {
   if(_pid_out) dosomething();
   if(_numeric_out) dosomething();// if not -n, out by name sort
 
+  // create root node
   char *root_path = "/proc/1";
   char *root_name;
   char *root_pid = "1";
@@ -113,16 +115,22 @@ int main(int argc, char *argv[]) {
   root_name = cut_proc_name(process_name);
   Process *root = init_process(root_pid,root_name);
 
+  // travel through children
   FILE *children = fopen("/proc/1/task/1/children","r");
   if(children == NULL)
   {
     perror("Error opening file");
     return(-1);
   }
-  char child_pid[30];
-  fgets(child_pid,2,children);
+  char children_list[MAX_CHILDREN_LIST];
+  fgets(children_list,MAX_CHILDREN_LIST,children);
   fclose(children);
-  printf("%s",child_pid);
+  char * child_pid = strtok(children_list, " ");
+   // loop through the string to extract all other tokens
+   while( child_pid != NULL ) {
+      printf( " %s\n", child_pid ); //printing each token
+      child_pid = strtok(NULL, " ");
+   }
 
   //access_children(root);
 
