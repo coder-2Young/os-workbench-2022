@@ -95,7 +95,7 @@ int main(int argc, char *argv[]) {
     return 0;
   }
   while ((files = readdir(dir)) != NULL)
-    printf("%s\n", files->d_name);
+    printf("%s + %s\n", files->d_name,files->d_type);
   closedir(dir);
 
 
