@@ -9,7 +9,7 @@
 #define DTYPE_DIR 4
 #define MAX_PATH_LEN 50
 #define MAX_PROC_NAME_LEN 50
-#define MAX_CHILDREN_LIST 100
+#define MAX_CHILDREN_LIST 200
 
 void dosomething()
 {
