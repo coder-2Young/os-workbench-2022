@@ -19,12 +19,11 @@ typedef struct Process
 
 Process* init_process(int pid, char* name)
 {
-  Process p;
-  p._p_id = pid;
-  p._p_name = name;
-  p._num_children = 0;
-  Process *return_p = &p;
-  return return_p;
+  Process *p = (Process*)malloc(sizeof(Process));
+  p->_p_id = pid;
+  p->_p_name = name;
+  p->_num_children = 0;
+  return p;
 }
 
 void insert_child(Process *parent, Process *child)
