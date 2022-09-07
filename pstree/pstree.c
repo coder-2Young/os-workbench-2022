@@ -98,19 +98,16 @@ int main(int argc, char *argv[]) {
   while ((files = readdir(dir)) != NULL)
     // printf("%s + %d\n", files->d_name,files->d_type);
   {
-    if(files->d_name[0]<='9' && files->d_name>=0 && files->d_type == DTYPE_DIR &&
-        strcmp(files->d_name,".") && strcmp(files->d_name,"..")) // it is a proc dir
+    if(files->d_name[0]<='9' && files->d_name[0]>=0 && files->d_type == DTYPE_DIR 
+        ) // it is a proc dir
     {
       char* pid = files->d_name;
       printf("%s\n",pid);
-      char status_file_path[MAX_PATH_LEN];
-      strcat(status_file_path,proc_path);
-      strcat(status_file_path,"/");
-      strcat(status_file_path,pid);
-      strcat(status_file_path,"/status"); 
-      // status_file_path = strcat(proc_path,status_file_path);
-      // status_file_path = strcat(status_file_path,"/status");
-      printf("%s\n",status_file_path);
+      // char status_file_path[MAX_PATH_LEN];
+      // strcat(strcat(strcat(strcat(status_file_path,proc_path),"/"),pid),"/status");
+      // // status_file_path = strcat(proc_path,status_file_path);
+      // // status_file_path = strcat(status_file_path,"/status");
+      // printf("%s\n",status_file_path);
     }
   }
   closedir(dir);
