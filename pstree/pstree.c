@@ -6,7 +6,7 @@
 
 void dosomething()
 {
-
+  return;
 }
 
 typedef struct Process
@@ -81,7 +81,7 @@ int main(int argc, char *argv[]) {
   if(_pid_out) dosomething();
   if(_numeric_out) dosomething();
 
-  char *proc_path = "/proc";
+  //char *proc_path = "/proc";
 
   Process *p1 = init_process(1,"root");
   Process *p2 = init_process(2,"file_sys");
