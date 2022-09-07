@@ -97,7 +97,8 @@ int main(int argc, char *argv[]) {
   while ((files = readdir(dir)) != NULL)
     // printf("%s + %d\n", files->d_name,files->d_type);
   {
-    if(files->d_name[0]<='9' && files->d_name>=0 && files->d_type == DTYPE_DIR) // it is a proc dir
+    if(files->d_name[0]<='9' && files->d_name>=0 && files->d_type == DTYPE_DIR
+        && files->d_name != "." && files->d_name != "..") // it is a proc dir
       printf("%s\n",files->d_name);
   }
   closedir(dir);
