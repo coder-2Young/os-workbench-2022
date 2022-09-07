@@ -112,7 +112,7 @@ int main(int argc, char *argv[]) {
   root_name = cut_proc_name(process_name);
   Process *root = init_process(root_pid,root_name);
   fclose(status);
-  // access_children(root);
+  access_children(root);
 
 
 
