@@ -2,8 +2,11 @@
 #include <assert.h>
 #include <string.h>
 #include <stdlib.h>
+#include <dirent.h>
 
-#define MAX_CHILDREN 20;
+
+#define MAX_CHILDREN 20
+
 
 void dosomething()
 {
@@ -14,7 +17,7 @@ typedef struct Process
 {
   int _p_id;
   char *_p_name;
-  struct Process *_p_children[20];
+  struct Process *_p_children[MAX_CHILDREN];
   int _num_children;
 }Process;
 
@@ -85,13 +88,21 @@ int main(int argc, char *argv[]) {
   if(_numeric_out) dosomething();
 
   char *proc_path = "/proc";
-  
+  struct dirent *files;
+  DIR *dir = opendir(proc_path);
+  if (dir == NULL){
+    printf("Directory cannot be opened!" );
+    return 0;
+  }
+  while ((files = readdir(dir)) != NULL)
+    printf("%s\n", files->d_name);
+  closedir(dir);
 
 
-  Process *p1 = init_process(1,"root");
-  Process *p2 = init_process(2,"file_sys");
-  insert_child(p1,p2);
-  access_children(p1);
+  // Process *p1 = init_process(1,"root");
+  // Process *p2 = init_process(2,"file_sys");
+  // insert_child(p1,p2);
+  // access_children(p1);
 
   return 0;
 }
