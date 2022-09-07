@@ -109,10 +109,17 @@ int main(int argc, char *argv[]) {
     return(-1);
   }
   fgets(process_name,MAX_PROC_NAME_LEN, status);
+  fclose(status);
   root_name = cut_proc_name(process_name);
   Process *root = init_process(root_pid,root_name);
-  fclose(status);
-  access_children(root);
+
+  FILE *children = fopen("/proc/1/task/children","r");
+  char *child_pid;
+  fgets(child_pid,10,children);
+  fclose(children);
+  printf("%s",child_pid);
+
+  //access_children(root);
 
 
 
