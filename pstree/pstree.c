@@ -21,6 +21,7 @@ typedef struct Process
   char* _p_id;
   char *_p_name;
   struct Process *_p_children[MAX_CHILDREN];
+  char *_p_children_pid[MAX_CHILDREN];
   int _num_children;
 }Process;
 
@@ -125,15 +126,19 @@ int main(int argc, char *argv[]) {
   char children_list[MAX_CHILDREN_LIST];
   fgets(children_list,MAX_CHILDREN_LIST,children);
   fclose(children);
-  char * child_pid = strtok(children_list, " ");
-   // loop through the string to extract all other tokens
-   while( child_pid != NULL ) {
-      printf( " %s\n", child_pid ); //printing each token
-      child_pid = strtok(NULL, " ");
-   }
+  char *child_pid = strtok(children_list, " ");
+  while(child_pid != NULL ) {
+    //printf("%s\n", child_pid ); //printing each token
+    root->_p_children_pid[root->_num_children] = child_pid;
+    root->_num_children++;
+    child_pid = strtok(NULL, " ");
+  }
 
   //access_children(root);
-
+  for(int i=0;i<root->_num_children;i++)
+  {
+    printf("%s\n",root->_p_children_pid[i]);
+  }
 
 
   // char *proc_path = "/proc";
