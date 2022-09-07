@@ -101,7 +101,7 @@ int main(int argc, char *argv[]) {
     if(files->d_name[0]<='9' && files->d_name[0]>='0' && files->d_type == DTYPE_DIR) // it is a proc dir
     {
       char* pid = files->d_name;
-      printf("%s\n",pid);
+      // printf("%s\n",pid);
       char status_file_path[MAX_PATH_LEN] = "";
       strcat(strcat(strcat(strcat(status_file_path,proc_path),"/"),pid),"/status");
       // status_file_path = strcat(proc_path,status_file_path);
