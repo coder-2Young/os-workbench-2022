@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <assert.h>
+#include <string.h>
 
 int main(int argc, char *argv[]) {
   // arg part
@@ -9,7 +10,7 @@ int main(int argc, char *argv[]) {
 
   for (int i = 0; i < argc; i++) {
     assert(argv[i]);
-    if(argv[i] == "-n"||"--numeric-sort")
+    if(strcmp(argv[i], "-n")||strcmp(argv[i],"--numeric-sort"))
       _numeric_out = 1;
     else if(*argv[i] == "-p"||"--show-pids")
       _pid_out = 1;
