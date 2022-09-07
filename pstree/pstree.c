@@ -7,6 +7,7 @@
 
 #define MAX_CHILDREN 20
 #define DTYPE_DIR 4
+#define MAX_PATH_LEN 50
 
 void dosomething()
 {
@@ -102,7 +103,7 @@ int main(int argc, char *argv[]) {
     {
       char* pid = files->d_name;
       printf("%s\n",pid);
-      char* status_file_path = "";
+      char status_file_path[MAX_PATH_LEN];
       strcat(status_file_path,proc_path);
       strcat(status_file_path,"/");
       strcat(status_file_path,pid);
