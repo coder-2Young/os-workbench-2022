@@ -9,7 +9,7 @@ int main(int argc, char *argv[]) {
 
   for (int i = 0; i < argc; i++) {
     assert(argv[i]);
-    if(*argv[i] == "-n"||"--numeric-sort")
+    if(argv[i] == "-n"||"--numeric-sort")
       _numeric_out = 1;
     else if(*argv[i] == "-p"||"--show-pids")
       _pid_out = 1;
