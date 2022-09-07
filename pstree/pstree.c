@@ -8,7 +8,7 @@
 #define MAX_CHILDREN 20
 #define DTYPE_DIR 4
 #define MAX_PATH_LEN 50
-#define MAX_PROC_NAME_LEN 30
+#define MAX_PROC_NAME_LEN 60
 
 void dosomething()
 {
