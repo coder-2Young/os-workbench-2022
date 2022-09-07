@@ -96,7 +96,7 @@ int main(int argc, char *argv[]) {
   }
 
   if(_pid_out) dosomething();
-  if(_numeric_out) dosomething();
+  if(_numeric_out) dosomething();// if not -n, out by name sort
 
   char *root_path = "/proc/1";
   char *root_name;
@@ -111,7 +111,9 @@ int main(int argc, char *argv[]) {
   fgets(process_name,MAX_PROC_NAME_LEN, status);
   root_name = cut_proc_name(process_name);
   Process *root = init_process(root_pid,root_name);
-  access_children(root);
+  fclose(status);
+  // access_children(root);
+
 
 
   // char *proc_path = "/proc";
@@ -148,11 +150,6 @@ int main(int argc, char *argv[]) {
   // }
   // closedir(dir);
 
-
-  // Process *p1 = init_process(1,"root");
-  // Process *p2 = init_process(2,"file_sys");
-  // insert_child(p1,p2);
-  // access_children(p1);
 
   return 0;
 }
