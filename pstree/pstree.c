@@ -13,7 +13,7 @@ int main(int argc, char *argv[]) {
   int _pid_out = 0;
   int _version_out = 0;
 
-  for (int i = 0; i < argc; i++) {
+  for (int i = 1; i < argc; i++) {
     assert(argv[i]);
     if(!strcmp(argv[i], "-n")||!strcmp(argv[i],"--numeric-sort"))
       _numeric_out = 1;
