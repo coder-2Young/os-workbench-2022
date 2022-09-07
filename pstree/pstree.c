@@ -113,7 +113,7 @@ int main(int argc, char *argv[]) {
   root_name = cut_proc_name(process_name);
   Process *root = init_process(root_pid,root_name);
 
-  FILE *children = fopen("/proc/1/task/children","r");
+  FILE *children = fopen("/proc/1/task/1/children","r");
   if(children == NULL)
   {
     perror("Error opening file");
