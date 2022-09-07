@@ -115,7 +115,7 @@ int main(int argc, char *argv[]) {
       }
       if(fgets (process_name,MAX_PROC_NAME_LEN, status)!=NULL )
       {
-        printf("%s\n",process_name);
+        printf("%s",process_name);
       }
     }
   }
