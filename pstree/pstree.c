@@ -119,7 +119,7 @@ int main(int argc, char *argv[]) {
     perror("Error opening file");
     return(-1);
   }
-  char *child_pid;
+  char *child_pid[30];
   fgets(child_pid,1,children);
   fclose(children);
   printf("%s",child_pid);
