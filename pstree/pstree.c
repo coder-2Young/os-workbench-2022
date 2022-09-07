@@ -141,40 +141,6 @@ int main(int argc, char *argv[]) {
   }
 
 
-  // char *proc_path = "/proc";
-  // struct dirent *files;
-  // DIR *dir = opendir(proc_path);
-  // if (dir == NULL){
-  //   printf("Directory cannot be opened!" );
-  //   return 0;
-  // }
-  // while ((files = readdir(dir)) != NULL)
-  //   // printf("%s + %d\n", files->d_name,files->d_type);
-  // {
-  //   if(files->d_name[0]<='9' && files->d_name[0]>='0' && files->d_type == DTYPE_DIR) // it is a proc dir
-  //   {
-  //     char* pid = files->d_name;
-  //     // printf("%s\n",pid);
-  //     char status_file_path[MAX_PATH_LEN] = "";
-  //     strcat(strcat(strcat(strcat(status_file_path,proc_path),"/"),pid),"/status");
-  //     // printf("%s\n",status_file_path);
-      // char process_name[MAX_PROC_NAME_LEN];
-      // FILE *status = fopen(status_file_path,"r");
-      // if(status == NULL)
-      // {
-      //   perror("Error opening file");
-      //   return(-1);
-      // }
-      // if(fgets (process_name,MAX_PROC_NAME_LEN, status)!=NULL )
-      // {
-      //   char* name=cut_proc_name(process_name);
-  //       Process *p = init_process(pid,name);
-  //     }
-      
-  //   }
-  // }
-  // closedir(dir);
-
 
   return 0;
 }
