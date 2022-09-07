@@ -23,7 +23,8 @@ Process* init_process(int pid, char* name)
   p._p_id = pid;
   p._p_name = name;
   p._num_children = 0;
-  return &p;
+  Process *return_p = &p;
+  return return_p;
 }
 
 void insert_child(Process *parent, Process *child)
