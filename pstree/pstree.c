@@ -120,7 +120,7 @@ int main(int argc, char *argv[]) {
     return(-1);
   }
   char child_pid[30];
-  fgets(child_pid,20,children);
+  fgets(child_pid,2,children);
   fclose(children);
   printf("%s",child_pid);
 
