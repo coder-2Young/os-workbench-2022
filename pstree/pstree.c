@@ -52,7 +52,7 @@ void access_children(Process *parent)
   printf("PID: %s, NAME: %s\n", parent->_p_id,parent->_p_name);
 }
 
-void cut_proc_name(char *proc_name)
+char* cut_proc_name(char *proc_name)
 {
   int cut_len = 6;
   char new_proc_name[MAX_PROC_NAME_LEN];
@@ -60,7 +60,7 @@ void cut_proc_name(char *proc_name)
   {
     new_proc_name[i] = proc_name[i+cut_len];
   }
-  proc_name = new_proc_name;
+  return new_proc_name;
 }
 
 int main(int argc, char *argv[]) {
@@ -124,8 +124,8 @@ int main(int argc, char *argv[]) {
       }
       if(fgets (process_name,MAX_PROC_NAME_LEN, status)!=NULL )
       {
-        cut_proc_name(process_name);
-        printf("%s",process_name);
+        char* new_process_name=cut_proc_name(process_name);
+        printf("%s",new_process_name);
       }
     }
   }
