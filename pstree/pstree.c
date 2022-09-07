@@ -55,7 +55,7 @@ void access_children(Process *parent)
 char* cut_proc_name(char *proc_name)
 {
   int cut_len = 6;
-  char new_proc_name[MAX_PROC_NAME_LEN];
+  char *new_proc_name = (char*)malloc(MAX_PROC_NAME_LEN);
   for(int i=0;i<MAX_PROC_NAME_LEN;i++)
   {
     new_proc_name[i] = proc_name[i+cut_len];
