@@ -112,7 +112,8 @@ int main(int argc, char *argv[]) {
   {
     root_name = cut_proc_name(process_name);
   }
-  printf("PID: %s, NAME: %s\n", root_pid,root_name);
+  Process *root = init_process(root_pid,root_name);
+  access_children(root);
 
 
   // char *proc_path = "/proc";
