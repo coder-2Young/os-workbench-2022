@@ -15,13 +15,13 @@ void dosomething()
 
 typedef struct Process
 {
-  int _p_id;
+  char* _p_id;
   char *_p_name;
   struct Process *_p_children[MAX_CHILDREN];
   int _num_children;
 }Process;
 
-Process* init_process(int pid, char* name)
+Process* init_process(char* pid, char* name)
 {
   Process *p = (Process*)malloc(sizeof(Process));
   p->_p_id = pid;
@@ -40,14 +40,14 @@ void access_children(Process *parent)
 {
   if(parent->_num_children == 0) 
   {
-    printf("PID: %d, NAME: %s\n", parent->_p_id,parent->_p_name);
+    printf("PID: %s, NAME: %s\n", parent->_p_id,parent->_p_name);
     return;
   }
   for(int i=0; i<parent->_num_children;i++)
   {
     access_children(parent->_p_children[i]);
   }
-  printf("PID: %d, NAME: %s\n", parent->_p_id,parent->_p_name);
+  printf("PID: %s, NAME: %s\n", parent->_p_id,parent->_p_name);
 }
 
 
@@ -99,7 +99,13 @@ int main(int argc, char *argv[]) {
   {
     if(files->d_name[0]<='9' && files->d_name>=0 && files->d_type == DTYPE_DIR &&
         strcmp(files->d_name,".") && strcmp(files->d_name,"..")) // it is a proc dir
-      printf("%s\n",files->d_name);
+    {
+      char* pid = files->d_name;
+      char* status_file_path = strcat("/",(char*)pid);
+      status_file_path = strcat(proc_path,status_file_path);
+      status_file_path = strcat(status_file_path,"/status");
+      printf("%s\n",status_file_path);
+    }
   }
   closedir(dir);
 
