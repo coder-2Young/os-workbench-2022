@@ -101,10 +101,11 @@ int main(int argc, char *argv[]) {
         strcmp(files->d_name,".") && strcmp(files->d_name,"..")) // it is a proc dir
     {
       char* pid = files->d_name;
-      char* status_file_path = strcat("/",(char*)pid);
-      status_file_path = strcat(proc_path,status_file_path);
-      status_file_path = strcat(status_file_path,"/status");
-      printf("%s\n",status_file_path);
+      printf("%s\n",pid);
+      // char* status_file_path = strcat("/",(char*)pid);
+      // status_file_path = strcat(proc_path,status_file_path);
+      // status_file_path = strcat(status_file_path,"/status");
+      // printf("%s\n",status_file_path);
     }
   }
   closedir(dir);
