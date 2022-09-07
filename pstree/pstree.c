@@ -114,8 +114,13 @@ int main(int argc, char *argv[]) {
   Process *root = init_process(root_pid,root_name);
 
   FILE *children = fopen("/proc/1/task/children","r");
+  if(children == NULL)
+  {
+    perror("Error opening file");
+    return(-1);
+  }
   char *child_pid;
-  fgets(child_pid,10,children);
+  fgets(child_pid,1,children);
   fclose(children);
   printf("%s",child_pid);
 
