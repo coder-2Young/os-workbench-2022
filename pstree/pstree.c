@@ -9,11 +9,11 @@ void dosomething()
 
 }
 
-typedef struct 
+typedef struct Process
 {
   int _p_id;
   char *_p_name;
-  Process *_p_children[20];
+  struct Process *_p_children[20];
   int _num_children;
 }Process;
 
