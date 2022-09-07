@@ -98,7 +98,7 @@ int main(int argc, char *argv[]) {
   while ((files = readdir(dir)) != NULL)
     // printf("%s + %d\n", files->d_name,files->d_type);
   {
-    if(files->d_name[0]<='9' && files->d_name[0]>=0 && files->d_type == DTYPE_DIR 
+    if(files->d_name[0]<='9' && files->d_name[0]>='0' && files->d_type == DTYPE_DIR 
         ) // it is a proc dir
     {
       char* pid = files->d_name;
