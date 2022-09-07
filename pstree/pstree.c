@@ -88,7 +88,7 @@ int main(int argc, char *argv[]) {
   Process *p2 = init_process(2,"file_sys");
   insert_child(p1,p2);
   
-  access_children(p2);
+  access_children(p1);
 
   return 0;
 }
