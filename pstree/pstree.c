@@ -6,7 +6,7 @@
 
 
 #define MAX_CHILDREN 20
-
+#define DTYPE_DIR 4
 
 void dosomething()
 {
@@ -95,7 +95,11 @@ int main(int argc, char *argv[]) {
     return 0;
   }
   while ((files = readdir(dir)) != NULL)
-    printf("%s + %d\n", files->d_name,files->d_type);
+    // printf("%s + %d\n", files->d_name,files->d_type);
+  {
+    if(files->d_name[0]<='9' && files->d_name>=0 && files->d_type == DTYPE_DIR) // it is a proc dir
+      printf("%s\n",files->d_name);
+  }
   closedir(dir);
 
 
