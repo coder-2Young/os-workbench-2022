@@ -13,6 +13,7 @@ int main(int argc, char *argv[]) {
   int _pid_out = 0;
   int _version_out = 0;
 
+  // parse the arg
   for (int i = 1; i < argc; i++) {
     assert(argv[i]);
     if(!strcmp(argv[i], "-n")||!strcmp(argv[i],"--numeric-sort"))
@@ -28,7 +29,8 @@ int main(int argc, char *argv[]) {
     }
   }
   assert(!argv[argc]);
-
+  
+  // print out version info
   char *version_info = 
     "This is my first version of pstree!\n ";
   if(_version_out)
