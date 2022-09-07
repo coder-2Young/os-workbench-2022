@@ -102,10 +102,10 @@ int main(int argc, char *argv[]) {
     {
       char* pid = files->d_name;
       printf("%s\n",pid);
-      // char* status_file_path = strcat("/",(char*)pid);
+      char* status_file_path = strcat("/",(char*)pid);
       // status_file_path = strcat(proc_path,status_file_path);
       // status_file_path = strcat(status_file_path,"/status");
-      // printf("%s\n",status_file_path);
+      printf("%s\n",status_file_path);
     }
   }
   closedir(dir);
