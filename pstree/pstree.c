@@ -11,6 +11,10 @@ int main(int argc, char *argv[]) {
     assert(argv[i]);
     printf("argv[%d] = %s\n", i, argv[i]);
   }
+
   assert(!argv[argc]);
+
+  char *words = "It is a string";
+  printf("%s",words);
   return 0;
 }
