@@ -101,11 +101,11 @@ Process* add_children_tree(char* pid)
     return(NULL);
   }
 
-  char children_list[MAX_CHILDREN_LIST];
+  char children_list[MAX_CHILDREN_LIST]="";
   fgets(children_list,MAX_CHILDREN_LIST,children);
   fclose(children);
   char *child_pid = strtok(children_list, " ");
-  while(child_pid != NULL && strcmp(child_pid, "@\003")) {
+  while(child_pid != NULL) {
     //printf("%s\n", child_pid ); //printing each token
     insert_child(root, add_children_tree(child_pid));
     child_pid = strtok(NULL, " ");
