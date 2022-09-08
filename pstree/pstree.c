@@ -105,7 +105,7 @@ Process* add_children_tree(char* pid)
   fgets(children_list,MAX_CHILDREN_LIST,children);
   fclose(children);
   char *child_pid = strtok(children_list, " ");
-  while(child_pid != NULL && child_pid != "@") {
+  while(child_pid != NULL && strcmp(child_pid, "@")) {
     //printf("%s\n", child_pid ); //printing each token
     insert_child(root, add_children_tree(child_pid));
     child_pid = strtok(NULL, " ");
