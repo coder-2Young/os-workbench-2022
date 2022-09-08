@@ -76,7 +76,7 @@ Process* add_children_tree(char* pid)
   if(status == NULL)
   {
     perror("Error opening file");
-    return(-1);
+    return(NULL);
   }
   fgets(process_name,MAX_PROC_NAME_LEN, status);
   fclose(status);
