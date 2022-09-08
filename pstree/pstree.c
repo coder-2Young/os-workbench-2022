@@ -92,6 +92,7 @@ Process* add_children_tree(char* pid)
   printf("root path: %s\n",root_path);
   printf("status path: %s\n",status_path);
   printf("children path: %s",children_path);
+  printf("name: %s\n",name);
 
 
   // travel through children
