@@ -67,10 +67,10 @@ char* cut_proc_name(char *proc_name)
 
 Process* add_children_tree(char* pid)
 {
-  char root_path[MAX_PATH_LEN];
+  char root_path[MAX_PATH_LEN]="";
   strcat(strcat(root_path,"./proc/"),pid);
   
-  char status_path[MAX_PATH_LEN];
+  char status_path[MAX_PATH_LEN]="";
   strcat(strcat(status_path,root_path),"/status");
   char process_name[MAX_PROC_NAME_LEN];
   // FILE *status = fopen(status_path,"r");
