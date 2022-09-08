@@ -73,16 +73,16 @@ Process* add_children_tree(char* pid)
   char status_path[MAX_PATH_LEN];
   strcat(strcat(status_path,root_path),"/status");
   char process_name[MAX_PROC_NAME_LEN];
-  FILE *status = fopen(status_path,"r");
-  if(status == NULL)
-  {
-    perror("Error opening file");
-    return(NULL);
-  }
-  fgets(process_name,MAX_PROC_NAME_LEN, status);
-  fclose(status);
-  char* name = cut_proc_name(process_name);
-  Process *root = init_process(pid,name);
+  // FILE *status = fopen(status_path,"r");
+  // if(status == NULL)
+  // {
+  //   perror("Error opening file");
+  //   return(NULL);
+  // }
+  // fgets(process_name,MAX_PROC_NAME_LEN, status);
+  // fclose(status);
+  // char* name = cut_proc_name(process_name);
+  // Process *root = init_process(pid,name);
 
   // char* children_path = root_path;
   // strcat(strcat(strcat(children_path,"/task/"),pid),"/children");
