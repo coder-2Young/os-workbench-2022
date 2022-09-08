@@ -87,8 +87,8 @@ Process* add_children_tree(char* pid)
   // char* children_path = root_path;
   // strcat(strcat(strcat(children_path,"/task/"),pid),"/children");
 
-  printf("root path: %s",root_path);
-  printf("status path: %s",status_path);
+  printf("root path: %s\n",root_path);
+  printf("status path: %s\n",status_path);
   // printf("children path: %s",children_path);
 
 
