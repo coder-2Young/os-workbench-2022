@@ -65,6 +65,52 @@ char* cut_proc_name(char *proc_name)
   return new_proc_name;
 }
 
+Process* add_children_tree(char* pid)
+{
+  char* root_path = "/proc/";
+  strcat(root_path,pid);
+  char* status_path = root_path;
+  strcat(status_path,"/status");
+  char process_name[MAX_PROC_NAME_LEN];
+  FILE *status = fopen(status_path,"r");
+  if(status == NULL)
+  {
+    perror("Error opening file");
+    return(-1);
+  }
+  fgets(process_name,MAX_PROC_NAME_LEN, status);
+  fclose(status);
+  char* name = cut_proc_name(process_name);
+  Process *root = init_process(pid,name);
+
+  char* children_path = root_path;
+  strcat(strcat(strcat(children_path,"/task/"),pid),"/children");
+
+  printf("root path: %s",root_path);
+  printf("status path: %s",status_path);
+  printf("children path: %s",children_path);
+  // travel through children
+  // FILE *children = fopen("/proc/1/task/1/children","r");
+  // if(children == NULL)
+  // {
+  //   perror("Error opening file");
+  //   return(-1);
+  // }
+  // char children_list[MAX_CHILDREN_LIST];
+  // fgets(children_list,MAX_CHILDREN_LIST,children);
+  // fclose(children);
+  // char *child_pid = strtok(children_list, " ");
+  // while(child_pid != NULL ) {
+  //   //printf("%s\n", child_pid ); //printing each token
+  //   root->_p_children_pid[root->_num_children] = child_pid;
+  //   root->_num_children++;
+  //   child_pid = strtok(NULL, " ");
+  // }
+
+  return root;
+}
+
+
 int main(int argc, char *argv[]) {
   // arg part
   int _numeric_out = 0;
@@ -100,45 +146,47 @@ int main(int argc, char *argv[]) {
   if(_pid_out) dosomething();
   if(_numeric_out) dosomething();// if not -n, out by name sort
 
-  // create root node
-  char *root_path = "/proc/1";
-  char *root_name;
-  char *root_pid = "1";
-  char process_name[MAX_PROC_NAME_LEN];
-  FILE *status = fopen("/proc/1/status","r");
-  if(status == NULL)
-  {
-    perror("Error opening file");
-    return(-1);
-  }
-  fgets(process_name,MAX_PROC_NAME_LEN, status);
-  fclose(status);
-  root_name = cut_proc_name(process_name);
-  Process *root = init_process(root_pid,root_name);
 
-  // travel through children
-  FILE *children = fopen("/proc/1/task/1/children","r");
-  if(children == NULL)
-  {
-    perror("Error opening file");
-    return(-1);
-  }
-  char children_list[MAX_CHILDREN_LIST];
-  fgets(children_list,MAX_CHILDREN_LIST,children);
-  fclose(children);
-  char *child_pid = strtok(children_list, " ");
-  while(child_pid != NULL ) {
-    //printf("%s\n", child_pid ); //printing each token
-    root->_p_children_pid[root->_num_children] = child_pid;
-    root->_num_children++;
-    child_pid = strtok(NULL, " ");
-  }
+  add_children_tree("1");
+  // // create root node
+  // char *root_path = "/proc/1";
+  // char *root_name;
+  // char *root_pid = "1";
+  // char process_name[MAX_PROC_NAME_LEN];
+  // FILE *status = fopen("/proc/1/status","r");
+  // if(status == NULL)
+  // {
+  //   perror("Error opening file");
+  //   return(-1);
+  // }
+  // fgets(process_name,MAX_PROC_NAME_LEN, status);
+  // fclose(status);
+  // root_name = cut_proc_name(process_name);
+  // Process *root = init_process(root_pid,root_name);
 
-  //access_children(root);
-  for(int i=0;i<root->_num_children;i++)
-  {
-    printf("%s\n",root->_p_children_pid[i]);
-  }
+  // // travel through children
+  // FILE *children = fopen("/proc/1/task/1/children","r");
+  // if(children == NULL)
+  // {
+  //   perror("Error opening file");
+  //   return(-1);
+  // }
+  // char children_list[MAX_CHILDREN_LIST];
+  // fgets(children_list,MAX_CHILDREN_LIST,children);
+  // fclose(children);
+  // char *child_pid = strtok(children_list, " ");
+  // while(child_pid != NULL ) {
+  //   //printf("%s\n", child_pid ); //printing each token
+  //   root->_p_children_pid[root->_num_children] = child_pid;
+  //   root->_num_children++;
+  //   child_pid = strtok(NULL, " ");
+  // }
+
+  // //access_children(root);
+  // for(int i=0;i<root->_num_children;i++)
+  // {
+  //   printf("%s\n",root->_p_children_pid[i]);
+  // }
 
 
 
