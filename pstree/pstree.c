@@ -150,7 +150,7 @@ int main(int argc, char *argv[]) {
   if(_numeric_out) dosomething();// if not -n, out by name sort
 
 
-  Process* root = add_children_tree("1");
+  Process* root = add_children_tree("1197");
   access_children(root);
   // // create root node
   // char *root_path = "/proc/1";
