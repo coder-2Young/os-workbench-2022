@@ -151,7 +151,7 @@ int main(int argc, char *argv[]) {
   if(_numeric_out) dosomething();// if not -n, out by name sort
 
 
-  char *root_pid = "1197";
+  char *root_pid = "1";
   Process* root = add_children_tree(root_pid);
   access_children(root);
   // // create root node
