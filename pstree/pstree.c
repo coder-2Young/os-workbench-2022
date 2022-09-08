@@ -86,7 +86,7 @@ Process* add_children_tree(char* pid)
   char* name = cut_proc_name(process_name);
   Process *root = init_process(pid,name);
 
-  char children_path[MAX_PATH_LEN];
+  char children_path[MAX_PATH_LEN]="";
   strcat(strcat(strcat(strcat(children_path,root_path),"/task/"),pid),"/children");
 
 
