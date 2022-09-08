@@ -110,7 +110,7 @@ Process* add_children_tree(char* pid)
   //   child_pid = strtok(NULL, " ");
   // }
 
-  return root;
+  return NULL;
 }
 
 
