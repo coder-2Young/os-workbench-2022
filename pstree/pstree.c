@@ -36,6 +36,7 @@ Process* init_process(char* pid, char* name)
 
 void insert_child(Process *parent, Process *child)
 {
+  if(child == NULL) return;
   parent->_p_children[parent->_num_children] = child;
   parent->_num_children++;
 }
@@ -107,7 +108,9 @@ Process* add_children_tree(char* pid)
   char *child_pid = strtok(children_list, " ");
   while(child_pid != NULL) {
     //printf("%s\n", child_pid ); //printing each token
-    insert_child(root, add_children_tree(child_pid));
+    char *child_token="";
+    strcpy(child_token,child_pid);
+    insert_child(root, add_children_tree(child_token));
     child_pid = strtok(NULL, " ");
   }
 
