@@ -73,6 +73,8 @@ Process* add_children_tree(char* pid)
   char status_path[MAX_PATH_LEN]="";
   strcat(strcat(status_path,root_path),"/status");
   char process_name[MAX_PROC_NAME_LEN];
+  printf("root path: %s\n",root_path);
+  printf("status path: %s\n",status_path);
   FILE *status = fopen(status_path,"r");
   if(status == NULL)
   {
