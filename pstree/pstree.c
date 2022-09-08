@@ -83,12 +83,14 @@ Process* add_children_tree(char* pid)
   char* name = cut_proc_name(process_name);
   Process *root = init_process(pid,name);
 
-  char* children_path = root_path;
-  strcat(strcat(strcat(children_path,"/task/"),pid),"/children");
+  // char* children_path = root_path;
+  // strcat(strcat(strcat(children_path,"/task/"),pid),"/children");
 
   printf("root path: %s",root_path);
   printf("status path: %s",status_path);
-  printf("children path: %s",children_path);
+  // printf("children path: %s",children_path);
+
+
   // travel through children
   // FILE *children = fopen("/proc/1/task/1/children","r");
   // if(children == NULL)
