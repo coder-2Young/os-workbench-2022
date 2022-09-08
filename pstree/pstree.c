@@ -108,7 +108,8 @@ Process* add_children_tree(char* pid)
   char *child_pid = strtok(children_list, " ");
   while(child_pid != NULL) {
     printf("child pid: %s\n", child_pid ); //printing each token
-    char *child_token=strcpy(child_token,child_pid);;
+    char child_token[MAX_PATH_LEN];
+    strcpy(child_token,child_pid);;
     insert_child(root, add_children_tree(child_token));
     child_pid = strtok(NULL, " ");
   }
