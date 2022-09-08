@@ -90,7 +90,7 @@ Process* add_children_tree(char* pid)
   strcat(strcat(strcat(strcat(children_path,root_path),"/task/"),pid),"/children");
 
 
-  // printf("children path: %s\n",children_path);
+  printf("children path: %s\n",children_path);
   // printf("name: %s\n",name);
 
   // travel through children
