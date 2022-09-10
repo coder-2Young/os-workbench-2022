@@ -114,6 +114,7 @@ Process* add_children_tree(const char* pid)
   fclose(children);
   char *child_pid = strtok(children_list, " ");
   while(child_pid != NULL) {
+    if(*child_pid = "\000") continue;
     printf("child pid: %s\n", child_pid ); //printing each token
     // char *child_pid_entry = (char*)malloc(MAX_PID_LEN);
     // strcpy(child_pid_entry,child_pid);
