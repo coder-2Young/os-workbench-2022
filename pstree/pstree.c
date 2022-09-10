@@ -49,7 +49,7 @@ void insert_child(Process *parent, Process *child)
 
 void access_children(Process *parent)
 {
-  printf("_________________________________");
+  printf("_________________________________\n");
   if(parent->_num_children == 0) 
   {
     printf("PID: %s, NAME: %s\n", parent->_p_id,parent->_p_name);
