@@ -17,6 +17,11 @@ void dosomething()
   return;
 }
 
+void foo(char* pid)
+{
+  return;
+}
+
 typedef struct Process
 {
   char* _p_id;
@@ -113,7 +118,7 @@ Process* add_children_tree(char* pid)
     // char *child_pid_entry = (char*)malloc(MAX_PID_LEN);
     // strcpy(child_pid_entry,child_pid);
     // insert_child(root, add_children_tree(child_pid_entry));
-    child_pid = "";
+    foo(child_pid);
     child_pid = strtok(NULL, " ");
   }
 
