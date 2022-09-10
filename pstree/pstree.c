@@ -31,7 +31,7 @@ typedef struct Process
   int _num_children;
 }Process;
 
-Process* init_process(char* pid, char* name)
+Process* init_process(const char* pid, const char* name)
 {
   Process *p = (Process*)malloc(sizeof(Process));
   p->_p_id = pid;
