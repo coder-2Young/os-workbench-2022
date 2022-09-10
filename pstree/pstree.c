@@ -72,7 +72,7 @@ char* cut_proc_name(char *proc_name)
   return new_proc_name;
 }
 
-Process* add_children_tree(char* pid)
+Process* add_children_tree(const char* pid)
 {
   if(pid == NULL) return NULL;
   char root_path[MAX_PATH_LEN]="";
@@ -117,8 +117,7 @@ Process* add_children_tree(char* pid)
     printf("child pid: %s\n", child_pid ); //printing each token
     // char *child_pid_entry = (char*)malloc(MAX_PID_LEN);
     // strcpy(child_pid_entry,child_pid);
-    // insert_child(root, add_children_tree(child_pid_entry));
-    foo(child_pid);
+    insert_child(root, add_children_tree(child_pid));
     child_pid = strtok(NULL, " ");
   }
 
