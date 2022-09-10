@@ -24,8 +24,8 @@ void foo(char* pid)
 
 typedef struct Process
 {
-  char* _p_id;
-  char *_p_name;
+  const char* _p_id;
+  const char *_p_name;
   struct Process *_p_children[MAX_CHILDREN];
   char *_p_children_pid[MAX_CHILDREN];
   int _num_children;
