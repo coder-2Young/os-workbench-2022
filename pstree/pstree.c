@@ -52,14 +52,14 @@ void access_children(Process *parent)
   printf("_________________________________\n");
   if(parent->_num_children == 0) 
   {
-    printf("PID: %s, NAME: %s\n", parent->_p_id,parent->_p_name);
+    printf("PID: %s, NAME: %s", parent->_p_id,parent->_p_name);
     return;
   }
   for(int i=0; i<parent->_num_children;i++)
   {
     access_children(parent->_p_children[i]);
   }
-  printf("PID: %s, NAME: %s\n", parent->_p_id,parent->_p_name);
+  printf("PID: %s, NAME: %s", parent->_p_id,parent->_p_name);
 }
 
 char* cut_proc_name(char *proc_name)
