@@ -9,7 +9,8 @@
 #define DTYPE_DIR 4
 #define MAX_PATH_LEN 50
 #define MAX_PROC_NAME_LEN 50
-#define MAX_CHILDREN_LIST 200
+#define MAX_CHILDREN_LIST 300
+#define MAX_PID_LEN 20
 
 void dosomething()
 {
@@ -109,7 +110,7 @@ Process* add_children_tree(char* pid)
   char *child_pid = strtok(children_list, " ");
   while(child_pid != NULL) {
     printf("child pid: %s\n", child_pid ); //printing each token
-    char *child_pid_entry="";
+    char child_pid_entry[MAX_PID_LEN]="";
     strcpy(child_pid_entry,child_pid);
     insert_child(root, add_children_tree(child_pid_entry));
     child_pid = strtok(NULL, " ");
