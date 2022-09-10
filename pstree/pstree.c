@@ -64,7 +64,7 @@ void access_children_helper(Process *parent,int layer)
 
 void access_children(Process *parent)
 {
-  access_children_helper(parent,0); 
+  access_children_helper(parent,1); 
 }
 
 char* cut_proc_name(char *proc_name)
