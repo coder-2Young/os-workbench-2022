@@ -55,7 +55,7 @@ void access_children_helper(Process *parent,int layer)
 
     for(int i=0;i<layer;i++)
     {
-      printf("-");
+      printf("---");
     }
     access_children_helper(parent->_p_children[i],layer+1);
     printf("|\n");
