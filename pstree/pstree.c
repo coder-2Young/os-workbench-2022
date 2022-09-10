@@ -110,15 +110,15 @@ Process* add_children_tree(const char* pid)
   }
 
   char children_list[MAX_CHILDREN_LIST]="";
+  char *rest = NULL;
   fgets(children_list,MAX_CHILDREN_LIST,children);
   fclose(children);
-  for (char *child_pid = strtok(children_list," "); child_pid != NULL; child_pid = strtok(NULL, " "))
+  for (char *child_pid = strtok_r(children_list," ",&rest); child_pid != NULL; child_pid = strtok_r(NULL, " ",&rest))
   {
     printf("child pid: %s\n", child_pid ); //printing each token
     char *child_pid_entry = strdup(child_pid);
     insert_child(root, add_children_tree(child_pid_entry));
   }
-
   return root;
 }
 
