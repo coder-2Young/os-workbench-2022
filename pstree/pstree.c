@@ -112,14 +112,21 @@ Process* add_children_tree(const char* pid)
   char children_list[MAX_CHILDREN_LIST]="";
   fgets(children_list,MAX_CHILDREN_LIST,children);
   fclose(children);
-  char *child_pid = strtok(children_list, " ");
-  while(child_pid != NULL) {
-    if(child_pid == "\000") continue;
+  // char *child_pid = strtok(children_list, " ");
+  // while(child_pid != NULL) {
+  //   if(child_pid == "\000") continue;
+  //   printf("child pid: %s\n", child_pid ); //printing each token
+  //   // char *child_pid_entry = (char*)malloc(MAX_PID_LEN);
+  //   // strcpy(child_pid_entry,child_pid);
+  //   insert_child(root, add_children_tree(child_pid));
+  //   child_pid = strtok(NULL, " ");
+  // }
+  for (char *child_pid = strtok(children_list," "); child_pid != NULL; child_pid = strtok(NULL, " "))
+  {
     printf("child pid: %s\n", child_pid ); //printing each token
     // char *child_pid_entry = (char*)malloc(MAX_PID_LEN);
     // strcpy(child_pid_entry,child_pid);
     insert_child(root, add_children_tree(child_pid));
-    child_pid = strtok(NULL, " ");
   }
 
   return root;
