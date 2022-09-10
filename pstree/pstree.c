@@ -47,15 +47,24 @@ void insert_child(Process *parent, Process *child)
   parent->_num_children++;
 }
 
-void access_children(Process *parent)
+void access_children_helper(Process *parent,int layer)
 {
   printf("PID: %s, NAME: %s", parent->_p_id,parent->_p_name);
   for(int i=0; i<parent->_num_children;i++)
   {
-    printf("  ");
-    access_children(parent->_p_children[i]);
+
+    for(int i=0;i<layer;i++)
+    {
+      printf("__");
+    }
+    access_children_helper(parent->_p_children[i],layer+1);
   }
   
+}
+
+void access_children(Process *parent)
+{
+  access_children_helper(parent,0); 
 }
 
 char* cut_proc_name(char *proc_name)
