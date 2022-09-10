@@ -50,15 +50,15 @@ void insert_child(Process *parent, Process *child)
 void access_children_helper(Process *parent,int layer)
 {
   printf("PID: %s, NAME: %s", parent->_p_id,parent->_p_name);
+  printf("--");
   for(int i=0; i<parent->_num_children;i++)
   {
-
-    for(int i=0;i<layer;i++)
-    {
-      printf("---");
-    }
     access_children_helper(parent->_p_children[i],layer+1);
-    printf("|\n");
+    if(i!=parent->_num_children) 
+    {
+      printf("|\n");
+      printf("--");
+    }
   }
   
 }
