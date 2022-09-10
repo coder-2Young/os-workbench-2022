@@ -47,9 +47,12 @@ void insert_child(Process *parent, Process *child)
   parent->_num_children++;
 }
 
-void access_children_helper(Process *parent,int layer)
+void access_children_helper(Process *parent,int layer,int _pid_out)
 {
-  printf("PID: %s, NAME: %s", parent->_p_id,parent->_p_name);
+  if(_pid_out)
+    printf("PID: %s, NAME: %s", parent->_p_id,parent->_p_name);
+  else
+    printf("NAME: %s")
   for(int i=0; i<parent->_num_children;i++)
   {
 
@@ -63,9 +66,9 @@ void access_children_helper(Process *parent,int layer)
   
 }
 
-void access_children(Process *parent)
+void access_children(Process *parent,int _pid_out)
 {
-  access_children_helper(parent,1); 
+  access_children_helper(parent,1,_pid_out); 
 }
 
 char* cut_proc_name(char *proc_name)
