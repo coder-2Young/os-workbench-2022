@@ -68,7 +68,7 @@ char* cut_proc_name(char *proc_name)
 
 Process* add_children_tree(char* pid)
 {
-  if(pid == NULL) return;
+  if(pid == NULL) return NULL;
   char root_path[MAX_PATH_LEN]="";
   strcat(strcat(root_path,"/proc/"),pid);
   
